@@ -205,6 +205,7 @@ def TestSortGitTrue():
         log_text += "Status: Failed\n\n"
     else:
         data = response.json()["info"]
+        testFlag = True
         if(len(data)==0):
             testFlag = False
         else:
