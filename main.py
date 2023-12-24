@@ -391,18 +391,22 @@ def TestSortDoubleFilterCount():
             log.write(log_text)
             testCounter+=1
 
+try:
+    TestSortGitTrue()
+    TestSortGitFalse()
 
-TestSortGitTrue()
-TestSortGitFalse()
+    TestSortContactTrue()
+    TestSortContactFalse()
 
-TestSortContactTrue()
-TestSortContactFalse()
+    TestSortGitTrueCount()
+    TestSortGitFalseCount()
 
-TestSortGitTrueCount()
-TestSortGitFalseCount()
+    TestSortContactTrueCount()
+    TestSortContactFalseCount()
 
-TestSortContactTrueCount()
-TestSortContactFalseCount()
+    TestSortDoubleFilterList()
+    TestSortDoubleFilterCount()
 
-TestSortDoubleFilterList()
-TestSortDoubleFilterCount()
+except(requests.ConnectTimeout):
+    log.truncate(0)
+    log.write("Connection error:\nCheck connection and try again")
