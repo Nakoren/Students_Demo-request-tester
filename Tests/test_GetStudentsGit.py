@@ -43,23 +43,23 @@ GetUserGitTrueList = {
     }
 }
 
-def TestSortGitTrue():
+def testSortGitTrue():
     response = requests.post(GET_LIST_URL, json=GetUserGitTrueList)
 
-    assert response.status_code!=200
+    assert response.status_code == 200
 
     data = response.json()["info"]
 
-    assert len(data)==0
+    assert len(data)!=0
 
     for i in range(1,len(data)):
         assert data[i]["fgit"]["hasGit"] == True
 
 
-def TestSortGitFalse():
+def testSortGitFalse():
     response = requests.post(GET_LIST_URL, json=GetUserGitFalseList)
 
-    assert response.status_code!=200
+    assert response.status_code == 200
 
     data = response.json()["info"]
     assert len(data)!=0

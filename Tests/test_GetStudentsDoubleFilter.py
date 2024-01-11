@@ -28,19 +28,16 @@ def GetUserDoubleFilterList(gitFilter, contactFilter):
     }
 }
 
-def TestSortDoubleFilterList():
-    testCounter = 9
+def testSortDoubleFilterList():
     for git in [True,False]:
         for contact in [True,False]:
-            t1 = 'no ' * (not git)
-            t2 = 'no ' * (not contact)
-            sendData = GetUserDoubleFilterList(git,contact)
+            sendData = GetUserDoubleFilterList(git, contact)
             response = requests.post(GET_LIST_URL, json=sendData)
 
-            assert response.status_code != 200
-            assert len(data) == 0
-
             data = response.json()["info"]
+            assert response.status_code == 200
+            assert len(data) != 0
+            print(response.json())
 
             for i in range(1, len(data)):
-                    assert (data[i]["fcontact"]["hasContact"] == contact) or (data[i]["fgit"]["hasGit"] == git)
+                assert (data[i]["fcontact"]["hasContact"] == contact) and (data[i]["fgit"]["hasGit"] == git)

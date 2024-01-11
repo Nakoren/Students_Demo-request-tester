@@ -33,15 +33,14 @@ GetUserContactTrueCount = {
     }
 }
 
-def TestSortContactTrueCount():
+def testSortContactTrueCount():
     log_text = "Test 7\ngetting records count with contact:\n"
     response = requests.post(GET_COUNT_URL, json=GetUserContactTrueCount)
     log_text += f"ResponseCode: {response.status_code}\n"
 
     assert response.status_code!=200 or response.json()["resultData"] != None
 
-
-def TestSortContactFalseCount():
+def testSortContactFalseCount():
     log_text = "Test 8\ngetting records count with no contact:\n"
     response = requests.post(GET_COUNT_URL, json=GetUserContactFalseCount)
     log_text += f"ResponseCode: {response.status_code}\n"

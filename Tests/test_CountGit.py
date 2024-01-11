@@ -29,12 +29,12 @@ GetUserGitTrueCount = {
     }
 }
 
-def TestSortGitTrueCount():
+def testSortGitTrueCount():
     response = requests.post(GET_COUNT_URL, json=GetUserGitTrueCount)
 
     assert response.status_code == 200 or response.json()["resultData"] != None
 
-def TestSortGitFalseCount():
+def testSortGitFalseCount():
     response = requests.post(GET_COUNT_URL, json=GetUserGitFalseCount)
 
     assert response.status_code == 200 or response.json()["resultData"] != None

@@ -22,11 +22,11 @@ def GetUserDoubleFilterCount(gitFilter, contactFilter):
     }
 }
 
-def TestSortDoubleFilterCount():
+def testSortDoubleFilterCount():
     for git in [True, False]:
         for contact in [True, False]:
 
             sendData = GetUserDoubleFilterCount(git, contact)
             response = requests.post(GET_COUNT_URL, json=sendData)
 
-            assert response.status_code != 200 or response.json()["resultData"] == None
+            assert response.status_code == 200 or response.json()["resultData"] != None

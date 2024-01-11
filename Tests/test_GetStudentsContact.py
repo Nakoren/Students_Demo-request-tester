@@ -47,18 +47,18 @@ GetUserContactTrueList = {
     }
 }
 
-def TestSortContactTrue():
+def testSortContactTrue():
     response = requests.post(GET_LIST_URL, json=GetUserContactTrueList)
 
     assert response.status_code == 200
 
     data = response.json()["info"]
-    assert data!=0
+    assert len(data) != 0
 
     for i in range(1,len(data)):
-        assert [i]["fcontact"]["hasContact"] == True
+        assert data[i]["fcontact"]["hasContact"] == True
 
-def TestSortContactFalse():
+def testSortContactFalse():
     response = requests.post(GET_LIST_URL, json=GetUserContactFalseList)
 
     assert response.status_code == 200
